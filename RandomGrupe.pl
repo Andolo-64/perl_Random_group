@@ -38,6 +38,12 @@ my $Grupe = <STDIN>;
 our @GrupeNavn = split / /, $Grupe;
 
 our $KormangeiGrupeNavn = scalar @GrupeNavn;
+#Randomise Grupe
+for(my $i = $KormangeiGrupeNavn - 1; $i > 0; $i--)
+{
+    my $RandomNomber = int(rand($i + 1));
+    @GrupeNavn[$i, $RandomNomber] = @GrupeNavn[$RandomNomber, $i];
+}
 
 chekOmGrupeErLiten();
 }
@@ -55,10 +61,9 @@ sub chekOmGrupeErLiten
     }
 }
 
-print "$KormangeiGrupeNavn  $Grupenomer ";
-
 $GrupeStorelse = $KormangeiGrupeNavn / $Grupenomer;
-print "$GrupeStorelse \n";
+
+print"\n";
 
 our $GrupeIndex = 0;
 
@@ -73,4 +78,5 @@ for(my $i = 1;$i <= $Grupenomer;$i++)
         print "$SplitGrupe\n";
         $GrupeIndex++;
     }
+    print"\n";
 }
